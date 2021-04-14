@@ -1,0 +1,47 @@
+// import style library
+@import '../../../statics/variables/Variables.scss';
+
+.weekend {
+    .day {
+        height: 100%;
+        width: 14.3%;
+        text-align: center;
+        padding: 30px 0;
+        font-size: $font-size-18;
+        p {
+            padding: 0.75rem;
+            color: $color-gray;
+            font-weight: $font-weight-500;
+        }
+
+        &__time {
+            padding-bottom: 30px;
+            
+
+
+            img {
+                width: 50%;
+                object-fit: cover;
+            }
+            
+        }
+
+        &__temperature {
+            p:not(:first-child) {
+                color: $color-cold;
+            }
+            p:first-child {
+                color: $color-hot;
+            }
+            i {
+                color: $color-gray;
+            }
+        }
+    }
+
+    .day:not(:last-child) {
+        border-right: 1px solid $color-gray;
+    }
+
+    
+}

@@ -1,0 +1,65 @@
+/* import style library */
+@import './statics/variables/Variables.scss';
+
+
+.app {
+	width: 100%;
+	height: 100vh;
+
+	&-wrapper {
+		background-color: $color-background-gray;
+		border-left: 1px solid $color-gray;
+		border-right: 1px solid $color-gray;
+		width: 80%;
+		height: 100%;
+		margin: 0 auto;
+	}
+
+	&__option {
+		@include propMixi(display, flex);
+
+		justify-content: center;
+		background-color: $color-lightgray;
+
+		&--1 {
+			text-align: right;
+		}
+		&__btn {
+			background: none;
+			border: 0;
+			padding: 0.75rem;
+			font-size: $font-size-18;
+			font-family: 'Ubuntu', sans-serif;
+			&:focus{
+				outline: none;
+			}
+		}
+	}
+
+	&__body {
+		padding: 30px;
+		font-size: $font-size-18;
+
+		&__contents {
+			display: grid;
+    		grid-template-columns: 1fr 6fr;
+
+			&__weather { 
+				padding: 15px 0;
+
+				h3 {
+					font-weight: $font-weight-600;
+				}
+				.temperature {
+					font-size: 48px;
+				}
+			}
+		}
+
+		&__list-view {
+			padding: 30px;
+			max-height: 70vh;
+		}
+	}
+}
+

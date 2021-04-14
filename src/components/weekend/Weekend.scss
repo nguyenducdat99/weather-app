@@ -1,0 +1,14 @@
+// import style library
+@import '../../statics/variables/Variables.scss';
+
+// style for function
+.weekend {
+    @include propMixi(display, flex);
+
+    border-radius: 0.25rem;
+    border: 1px solid $color-gray;
+    background-color: $color-white;
+    overflow: hidden;
+    height: 100%;
+
+}

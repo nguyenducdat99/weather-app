@@ -1,15 +1,23 @@
 // import style library, component
 import './App.scss';
-import sun from './statics/images/sun.png';
-import Weekend from './components/weekend/Weekend';
-
+import * as statics from './constants/GlobalVariables';
 
 function App(props) {
 
 	// get props
 	const {
-		weekeend
+		weekeend,
+		current
 	} = props;
+
+	// convert data current
+	const {
+		temp,
+		weather
+	} = current;
+	const tempC = Math.floor(temp - 273.15);
+	const iconUrl = weather?(statics.iconUrl + weather[0].icon + '@2x.png'):'';
+	const description = weather?weather[0].description:'';
 
 	return (
 		<div className="app">
@@ -34,20 +42,22 @@ function App(props) {
 				<div className="app__body">
 					<div className='app__body__contents'>
 						<div className="app__body__contents__icon">
-							<img src={sun} alt="sun" />
+							<img src={iconUrl} alt="sun" />
 						</div>
 						<div className="app__body__contents__weather">
 							<h3>Thành phố Hà Nội</h3>
 							<p>
 								<span className='temperature'>
-									<b>20<sup>&#9900;</sup></b>
+									<b>{tempC}<sup>&#9900;</sup></b>
 								</span>
-								<span>Có mưa nhỏ</span>
+								<span>{description}</span>
 							</p>
 						</div>
 					</div>
 					<div className='app__body__list-view'>
-						
+						{
+							weekeend()
+						}
 					</div>
 				</div>
 			</div>

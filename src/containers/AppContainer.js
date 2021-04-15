@@ -1,5 +1,6 @@
 import App from '../App';
 import Weekend from '../components/weekend/Weekend';
+import Day from '../components/weekend/day/Day';
 import { connect } from 'react-redux';
 import * as actions from '../actions/Actions';
 import PropTypes from 'prop-types';
@@ -8,46 +9,62 @@ import { useEffect } from 'react';
 function AppContainer(props) {
     // get props
     const {
-        getLocations,
-        weather
+        getWeather,
+        daily,
+        current
     } = props;
 
     // load data
     useEffect(
         () => {
-            getLocations();
+            getWeather();
             //eslint-disable-next-line
         },[]
     )
 
+    const listDay = daily.map(
+        (element, index) => {
+            return (
+                <Day
+                    key={index}
+                    data={element}
+                />
+            )
+        }
+    )
     // return ui weekend
     const weekendUI = () => {
         return (
-            <Weekend/>
+            <Weekend 
+                day={listDay}
+            />
         )
     }
 
     return (
         <App 
             weekeend={weekendUI}
+            current={current}
         />
     )
 }
 
 AppContainer.propTypes = {
-    getLocations: PropTypes.func,
-    weather: PropTypes.object
+    getWeather: PropTypes.func,
+    daily: PropTypes.array,
+    current: PropTypes.object
 }
 
 const mapStateToProps = state => {
     return {
-        weather: state.weather
+        daily: state.daily,
+        current: state.current
     }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
-        getLocations: () => {
+        getWeather: () => {
             dispatch(actions.onWeatherListen('Hà Nội'));
         }
     }

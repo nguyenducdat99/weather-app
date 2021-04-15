@@ -1,18 +1,18 @@
 // import style library
 import './Weekend.scss';
-import Day from './day/Day';
 
 // code function here
-function Weekend() {
+function Weekend(props) {
+    // get props
+    const {
+        day
+    } = props;
+
     return (
         <div className='weekend'>
-            <Day/>
-            <Day/>
-            <Day/>
-            <Day/>
-            <Day/>
-            <Day/>
-            <Day/>
+            {
+                day
+            }
         </div>
     )
 }

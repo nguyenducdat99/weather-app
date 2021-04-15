@@ -1,10 +1,10 @@
 /* import style library */
-@import './statics/variables/Variables.scss';
+@import './variables/Variables.scss';
 
 
 .app {
 	width: 100%;
-	height: 100vh;
+	min-height: 100vh;
 
 	&-wrapper {
 		background-color: $color-background-gray;
@@ -58,7 +58,6 @@
 
 		&__list-view {
 			padding: 30px;
-			max-height: 70vh;
 		}
 	}
 }

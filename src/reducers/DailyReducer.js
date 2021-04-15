@@ -1,6 +1,6 @@
 import * as types from '../constants/ActionTypes';
 
-const initialState = {};
+const initialState = [];
 
 function myReducer(state=initialState, action) {
     const type = action.type;
@@ -9,15 +9,16 @@ function myReducer(state=initialState, action) {
 
     switch (type) {
         case types.GET_WEATHER_SUCCESS:
-            console.log(payload);
-            state = {...payload.data};
+            state = [
+                ...payload.data.daily
+            ];
             
-            return {...state};
+            return [...state];
         case types.GET_WEATHER_FAILED:
             alert(payload.message);
-            state = {...initialState};
+            state = [...initialState];
 
-            return {...state}
+            return [...state]
         default:
 
             return state;

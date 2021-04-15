@@ -27,3 +27,13 @@ export const onWeatherFailed = () => {
         }
     }
 }
+
+export const onCurrentWeather = data => {
+    return {
+        type: types.SET_CURRENT_WEATHER,
+        payload: {
+            message: 'Lấy dữ liệu thành công',
+            data: data
+        }
+    }
+}

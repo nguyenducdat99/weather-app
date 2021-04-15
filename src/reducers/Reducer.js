@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import weather from './WeatherReducer';
+import daily from './DailyReducer';
+import current from './CurrentReducer';
 // return root reducer
 export const rootReducer = combineReducers({
-    weather
+    daily,
+    current
 });

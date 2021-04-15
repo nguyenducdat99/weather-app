@@ -1,19 +1,43 @@
 // import style library
 import './Day.scss';
-import sun from '../../../statics/images/sun.png';
+import * as statics from '../../../constants/GlobalVariables';
 
 // code function here
-function Day() {
+function Day(props) {
+    const {
+        data
+    } = props;
+
+    // convert data
+    const {
+        dt, 
+        temp,
+        weather
+    } = data;
+    const date = new Date(dt*1000);
+    const tempMin = Math.floor(temp.min - 273.15);
+    const tempMax = Math.floor(temp.max - 273.15);
+
+    const weatherIconLink = statics.iconUrl + weather[0].icon + '.png';
+
     return (
         <div className='day'>
             <div className="day__time">
-                <p>Thứ tư</p>
-                <p>14 tháng tư</p>
-                <img src={sun} alt='sun'/>
+                <p>
+                    {
+                        statics.days[date.getDay()]
+                    }
+                </p>
+                <p>
+                    {
+                        date.getDate() + ' ' + statics.months[date.getMonth()]
+                    }
+                </p>
+                <img src={weatherIconLink} alt='sun'/>
             </div>
             <div className='day__temperature'>
-                <p>27<sup>&#9900;</sup></p>
-                <p>23<sup>&#9900;</sup></p>
+                <p>{tempMax}<sup>&#9900;</sup></p>
+                <p>{tempMin}<sup>&#9900;</sup></p>
                 <i className="fa fa-ellipsis-v" aria-hidden="true"></i>
             </div>
         </div>

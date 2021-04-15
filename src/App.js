@@ -4,7 +4,13 @@ import sun from './statics/images/sun.png';
 import Weekend from './components/weekend/Weekend';
 
 
-function App() {
+function App(props) {
+
+	// get props
+	const {
+		weekeend
+	} = props;
+
 	return (
 		<div className="app">
 			<div className="app-wrapper">
@@ -41,7 +47,7 @@ function App() {
 						</div>
 					</div>
 					<div className='app__body__list-view'>
-						<Weekend/>
+						
 					</div>
 				</div>
 			</div>

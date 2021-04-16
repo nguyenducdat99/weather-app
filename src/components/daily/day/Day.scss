@@ -16,12 +16,17 @@
 
         &__time {
             padding-bottom: 30px;
-            
-
 
             img {
                 width: 50%;
                 object-fit: cover;
+                margin: 0 auto;
+            }
+
+            &__background {
+                margin: 0.75rem;
+                background-color: $color-background-blue;
+                border-radius: 0.25rem;
             }
             
         }
@@ -40,7 +45,7 @@
     }
 
     .day:not(:last-child) {
-        border-right: 1px solid $color-gray;
+        border-right: 1px solid $color-border-page;
     }
 
     

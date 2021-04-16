@@ -1,0 +1,80 @@
+// import style library
+@import '../../variables/Variables.scss';
+
+// style for function
+.app {
+	.current {
+		color: $color-white;
+		&__option {
+			@include propMixi(display, flex);
+			
+			font-weight: $font-weight-600;
+			
+			justify-content: center;
+	
+			&--1 {
+				text-align: right;
+			}
+			&__btn {
+				background: none;
+				border: 0;
+				padding: 0.75rem;
+				font-size: $font-size-18;
+				font-family: 'Ubuntu', sans-serif;
+				&:focus{
+					outline: none;
+				}
+			}
+		}
+
+		&__body {
+			padding-top: 30px;
+
+			&__quick-contents {
+				text-align: center;
+				color: $color-white;
+
+				.temperature {
+					@include propMixi(display, flex);
+					
+					justify-content: center;
+
+					b {
+						font-size: $font-size-72;
+						line-height: 1;
+					}
+
+					button {
+						display: block;
+						padding: 0 0.75rem;
+						background: none;
+						border: 1px solid transparent;
+						color: $color-white;
+						font-weight: $font-weight-600;
+					}
+
+					&__active {
+						margin-top: 15px;
+    					font-size: 48px;
+					}
+					&__disable {
+
+						&:hover {
+							border: 1px solid $color-white;
+							background-color: $color-lightgray;
+
+						}
+					}
+				}
+				q,
+				p {
+					line-height: 1.8;
+					letter-spacing: 1px;
+				}
+			}
+			&__detail-content {
+				padding: 30px;
+			}
+		}
+	}
+}

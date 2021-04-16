@@ -1,6 +1,8 @@
 import App from '../App';
-import Weekend from '../components/weekend/Weekend';
-import Day from '../components/weekend/day/Day';
+import Current from '../components/current/Current';
+import Hourly from '../components/hourly/Hourly';
+import Daily from '../components/daily/Daily';
+import Day from '../components/daily/day/Day';
 import { connect } from 'react-redux';
 import * as actions from '../actions/Actions';
 import PropTypes from 'prop-types';
@@ -32,19 +34,36 @@ function AppContainer(props) {
             )
         }
     )
-    // return ui weekend
-    const weekendUI = () => {
+
+    // return ui current
+    const currentUI = () => {
         return (
-            <Weekend 
-                day={listDay}
+            <Current />
+        )
+    }
+
+    // return ui hourly
+    const hourlyUI = () => {
+        return (
+            <Hourly />
+        )
+    }
+
+    // return ui daily
+    const dailyUI = () => {
+        return (
+            <Daily 
+                days={listDay}
+                current={current}
             />
         )
     }
 
     return (
         <App 
-            weekeend={weekendUI}
-            current={current}
+            current={currentUI}
+            hourly={hourlyUI}
+            daily={dailyUI}
         />
     )
 }

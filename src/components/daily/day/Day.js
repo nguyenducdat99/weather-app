@@ -33,7 +33,9 @@ function Day(props) {
                         date.getDate() + ' ' + statics.months[date.getMonth()]
                     }
                 </p>
-                <img src={weatherIconLink} alt='sun'/>
+                <div className="day__time__background">
+                    <img src={weatherIconLink} alt='sun'/>
+                </div>
             </div>
             <div className='day__temperature'>
                 <p>{tempMax}<sup>&#9900;</sup></p>

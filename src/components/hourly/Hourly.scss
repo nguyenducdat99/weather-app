@@ -1,0 +1,32 @@
+// import style library
+@import '../../variables/Variables.scss';
+
+// style for function
+.app {
+	.hourly {
+		&__option {
+			@include propMixi(display, flex);
+			
+			font-weight: $font-weight-600;
+			color: $color-white;
+			justify-content: center;
+	
+			&--1 {
+				text-align: right;
+			}
+			&__btn {
+				background: none;
+				border: 0;
+				padding: 0.75rem;
+				font-size: $font-size-18;
+				font-family: 'Ubuntu', sans-serif;
+				&:focus{
+					outline: none;
+				}
+			}
+		}
+	
+		
+	
+	}
+}

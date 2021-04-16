@@ -1,64 +1,46 @@
 /* import style library */
 @import './variables/Variables.scss';
 
+body {
+	background-color: $color-background-blue;
+}
 
 .app {
 	width: 100%;
-	min-height: 100vh;
+	height: 100vh;
 
-	&-wrapper {
-		background-color: $color-background-gray;
-		border-left: 1px solid $color-gray;
-		border-right: 1px solid $color-gray;
-		width: 80%;
+	.slick-slider{
+		height: 100vh;
+	}
+	
+	.slick-list,
+	.slick-track {
 		height: 100%;
-		margin: 0 auto;
 	}
 
-	&__option {
-		@include propMixi(display, flex);
-
-		justify-content: center;
-		background-color: $color-lightgray;
-
-		&--1 {
-			text-align: right;
-		}
-		&__btn {
-			background: none;
-			border: 0;
-			padding: 0.75rem;
-			font-size: $font-size-18;
-			font-family: 'Ubuntu', sans-serif;
-			&:focus{
-				outline: none;
-			}
+	.slick-slide {
+		div:focus {
+			outline: none;
 		}
 	}
 
-	&__body {
-		padding: 30px;
-		font-size: $font-size-18;
+	.slick-prev{
+		left: 0;
+		background-color: black;
+		z-index: 1000;
+	}
+	.slick-next {
+		right: 0;
+		background-color: black;
+		z-index: 1000;
+	}
 
-		&__contents {
-			display: grid;
-    		grid-template-columns: 1fr 6fr;
-
-			&__weather { 
-				padding: 15px 0;
-
-				h3 {
-					font-weight: $font-weight-600;
-				}
-				.temperature {
-					font-size: 48px;
-				}
-			}
-		}
-
-		&__list-view {
-			padding: 30px;
-		}
+	.slick-next,
+	.slick-prev {
+		width: 50px;
+		height: 50px;
+		top: 25px;
+		background-color: $color-background-blue;
 	}
 }
 

@@ -11,7 +11,6 @@ function* getLocations(action) {
         const getWeather = yield call(APITask.getWeather,getGeo.data[0]);
 
         if (getWeather.status === 200) {
-            console.log(getWeather.data);
             yield put(actions.onWeatherSuccess(getWeather.data));
             yield put(actions.onCurrentWeather(getWeather.data));
         }else{

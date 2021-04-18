@@ -34,6 +34,10 @@
 				text-align: center;
 				color: $color-white;
 
+				h1 {
+					font-weight: $font-weight-400;
+				}
+
 				.temperature {
 					@include propMixi(display, flex);
 					
@@ -74,6 +78,31 @@
 			}
 			&__detail-content {
 				padding: 30px;
+
+				&__grid {
+					display: grid;
+					grid-template-columns: 1fr 1fr 1fr;
+					grid-column-gap: 20px;
+				}
+
+				h3 {
+					font-size: $font-size-32;
+					font-weight: $font-weight-400;
+					padding-bottom: 15px;
+				}
+
+				&__temperature,
+				&__sun,
+				&__other {
+					border-top: 1px solid white;
+					
+					h4 {
+						padding-top: 0.75rem;
+					}
+					p {
+						line-height: 1.5;
+					}
+				}
 			}
 		}
 	}

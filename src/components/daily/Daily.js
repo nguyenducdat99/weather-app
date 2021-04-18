@@ -10,7 +10,6 @@ function Weekend(props) {
         current
     } = props;
 
-    console.log(days);
 
 	// convert data current
 	const {

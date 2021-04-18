@@ -18,7 +18,7 @@ function App(props) {
 	// get props
 	const {
 		current,
-		hourly,
+		// hourly,
 		daily
 	} = props;
 
@@ -30,11 +30,11 @@ function App(props) {
 						current()
 					}
 				</div>
-				<div className='app__hours'>
+				{/* <div className='app__hours'>
 					{
 						hourly()
 					}
-				</div>
+				</div> */}
 				<div className='app__daily'>
 					{
 						daily()

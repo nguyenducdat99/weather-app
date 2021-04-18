@@ -38,7 +38,10 @@ function AppContainer(props) {
     // return ui current
     const currentUI = () => {
         return (
-            <Current />
+            <Current 
+                daily={daily}
+                current={current}
+            />
         )
     }
 

@@ -48,8 +48,8 @@
 			}
 	
 			&__list-view {
-				@include propMixi(display, flex);
-	
+				@include propMixi(display, grid);
+				grid-template-columns: repeat(8,1fr);
 				margin-top: 30px;
 				border-radius: 0.25rem;
 				border: 1px solid $color-border-page;

@@ -1,52 +1,84 @@
 // import style library
 @import '../../../variables/Variables.scss';
 
+@mixin position {
+    position: absolute;
+    transition: all 1s;
+    padding: 30px 0;
+    width: 100%;
+}
+
 .weekend {
-    .day {
-        height: 100%;
-        width: 14.3%;
+    .day__wrapper {
         text-align: center;
-        padding: 30px 0;
         font-size: $font-size-18;
-        p {
-            padding: 0.75rem;
-            color: $color-gray;
-            font-weight: $font-weight-500;
-        }
+        position: relative;
+        height: 50vh;
+        // margin: 0 auto;
 
-        &__time {
-            padding-bottom: 30px;
-
-            img {
-                width: 50%;
-                object-fit: cover;
-                margin: 0 auto;
-            }
-
-            &__background {
-                margin: 0.75rem;
-                background-color: $color-background-blue;
-                border-radius: 0.25rem;
-            }
-            
-        }
-
-        &__temperature {
-            p:not(:first-child) {
-                color: $color-cold;
-            }
-            p:first-child {
-                color: $color-hot;
-            }
-            i {
+        .day {
+            @include position;
+    
+            p {
+                padding: 0.75rem;
                 color: $color-gray;
+                font-weight: $font-weight-500;
+            }
+    
+            &__time {
+                padding-bottom: 30px;
+    
+                img {
+                    width: 50%;
+                    object-fit: cover;
+                    margin: 0 auto;
+                }
+    
+                &__background {
+                    margin: 0.75rem;
+                    background-color: $color-background-blue;
+                    border-radius: 0.25rem;
+                }
+                
+            }
+    
+            &__temperature {
+                p:not(:first-child) {
+                    color: $color-cold;
+                }
+                p:first-child {
+                    color: $color-hot;
+                }
+                i {
+                    color: $color-gray;
+                }
             }
         }
-    }
+    
+        .day-detail {
+            @include position;
+            opacity: 0;
+            transform: rotateY(-180deg);
+            font-size: 14px;
+            line-height: 1.9;
+        }
 
-    .day:not(:last-child) {
-        border-right: 1px solid $color-border-page;
+        &:hover {
+            .day {
+                transform: rotateY(180deg);
+                opacity: 0;
+            }
+            .day-detail {
+                opacity: 1;
+                transform: rotateY(0);
+            }
+        }
+
+        &:not(:last-child) {
+            border-right: 1px solid $color-border-page;
+        }
     }
 
     
+
 }

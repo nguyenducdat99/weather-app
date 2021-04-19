@@ -19,7 +19,7 @@ function Hourly(props) {
                     </span>
                 </div>
                 <div className='hourly__body'>
-                    <h4>Thông tin nhiệt độ hàng ngày</h4>
+                    <h4>Thông tin nhiệt độ hàng giờ</h4>
                     <div className='hourly__body__temp-chart'>
                         {
                             tempChartUI()

@@ -33,7 +33,7 @@ function Weekend(props) {
                             <img src={handleData.convertIconURL(weather,'@2x')} alt="sun" />
                         </div>
                         <div className="weekend__body__contents__weather">
-                            <h3>Thành phố Hà Nội</h3>
+                            <h3>Vị trí của bạn</h3>
                             <p>
                                 <span className='temperature'>
                                     <b>

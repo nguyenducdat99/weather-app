@@ -40,3 +40,12 @@ export const convertDescription = weather => {
 
     return weather[0].description;
 }
+
+export const messageUVI = uvi => {
+    if (!uvi) return 0 +'';
+    if (uvi <= 2.9) return uvi + ' mức thấp';
+    if (uvi > 2.9 && uvi <= 5.9) return uvi + ' mức trung bình';
+    if (uvi > 5.9 && uvi <= 7.9) return uvi + ' mức cao';
+    if (uvi > 7.9 && uvi <= 10.9) return uvi + ' mức rất cao';
+    if (uvi > 10.9) return uvi + ' mức nguy hiểm';
+}

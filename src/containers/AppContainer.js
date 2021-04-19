@@ -7,14 +7,19 @@ import { connect } from 'react-redux';
 import * as actions from '../actions/Actions';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
+import TempChart from '../components/hourly/chart/tempChart';
 
 function AppContainer(props) {
     // get props
     const {
         getWeather,
         daily,
-        current
+        current,
+        typeTemp,
+        onToggleTemperature,
+        hourly
     } = props;
+
 
     // load data
     useEffect(
@@ -30,6 +35,7 @@ function AppContainer(props) {
                 <Day
                     key={index}
                     data={element}
+                    typeTemp={typeTemp}
                 />
             )
         }
@@ -41,6 +47,8 @@ function AppContainer(props) {
             <Current 
                 daily={daily}
                 current={current}
+                typeTemp={typeTemp}
+                onToggleTemperature={onToggleTemperature}
             />
         )
     }
@@ -48,7 +56,9 @@ function AppContainer(props) {
     // return ui hourly
     const hourlyUI = () => {
         return (
-            <Hourly />
+            <Hourly
+                tempChartUI={tempChartUI}
+            />
         )
     }
 
@@ -58,6 +68,18 @@ function AppContainer(props) {
             <Daily 
                 days={listDay}
                 current={current}
+                typeTemp={typeTemp}
+            />
+        )
+    }
+
+
+    // return ui temp chart
+    const tempChartUI = () => {
+        return (
+            <TempChart 
+                hourly={hourly}
+                typeTemp={typeTemp}
             />
         )
     }
@@ -74,22 +96,30 @@ function AppContainer(props) {
 AppContainer.propTypes = {
     getWeather: PropTypes.func,
     daily: PropTypes.array,
-    current: PropTypes.object
+    current: PropTypes.object,
+    typeTemp: PropTypes.bool,
+    onToggleTemperature: PropTypes.func
 }
 
 const mapStateToProps = state => {
     return {
         daily: state.daily,
-        current: state.current
+        current: state.current,
+        typeTemp: state.temperature,
+        hourly: state.hourly
     }
 }
 
 const mapDispatchToProps = (dispatch, props) => {
     return {
         getWeather: () => {
-            dispatch(actions.onWeatherListen('Hà Nội'));
+            dispatch(actions.onWeatherListen());
+        },
+        onToggleTemperature: () => {
+            dispatch(actions.onToggleTemperature());
         }
     }
 }
+
 
 export default connect(mapStateToProps,mapDispatchToProps) (AppContainer);

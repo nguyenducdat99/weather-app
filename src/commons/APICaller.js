@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async function APICaller(method, endpoint, data) {
+export const getAPI = async (method, endpoint, data) => {
     try {
         const response = await axios(
             {
@@ -15,3 +15,14 @@ export default async function APICaller(method, endpoint, data) {
         console.log(error);
     }
 }
+
+export const getCoords = async () => {
+    const position = await new Promise((resolve, reject) => {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
+
+    return {
+      lon: position.coords.longitude,
+      lat: position.coords.latitude,
+    };
+};

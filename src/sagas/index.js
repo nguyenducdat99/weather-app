@@ -3,22 +3,26 @@ import * as actions from '../actions/Actions';
 import * as APITask from '../commons/APITask';
 import * as types from '../constants/ActionTypes';
 
-function* getLocations(action) {
-    const payload = action.payload;
-    const getGeo = yield call(APITask.getGeo,payload.data);
 
-    if (getGeo.status===200){
-        const getWeather = yield call(APITask.getWeather,getGeo.data[0]);
 
-        if (getWeather.status === 200) {
-            yield put(actions.onWeatherSuccess(getWeather.data));
-            yield put(actions.onCurrentWeather(getWeather.data));
-        }else{
-            yield put(actions.onWeatherFailed());
-        }
+function* getLocations() {
+    const location = yield call(APITask.getlocation);
+
+    const getWeather = yield call(
+        APITask.getWeather,
+        {
+            lat: location.lat||21.020045,
+            lon: location.lon||105.783961
+        });
+
+    if (getWeather.status === 200) {
+        yield put(actions.onWeatherSuccess(getWeather.data));
+        yield put(actions.onCurrentWeather(getWeather.data));
+        yield put(actions.onHourlyWeather(getWeather.data));
     }else{
         yield put(actions.onWeatherFailed());
     }
+
     
 }
 

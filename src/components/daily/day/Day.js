@@ -5,7 +5,8 @@ import * as handleData from '../../../commons/handleData';
 // code function here
 function Day(props) {
     const {
-        data
+        data,
+        typeTemp
     } = props;
 
     // get value in data
@@ -35,12 +36,12 @@ function Day(props) {
             <div className='day__temperature'>
                 <p>
                 {
-                    handleData.convertTempC(temp.max,true)    
+                    handleData.convertTempC(temp.max,typeTemp)    
                 }
                 <sup>&#9900;</sup></p>
                 <p>
                 {
-                    handleData.convertTempC(temp.min,true)
+                    handleData.convertTempC(temp.min,typeTemp)
                 }
                 <sup>&#9900;</sup></p>
                 <i className="fa fa-ellipsis-v" aria-hidden="true"></i>

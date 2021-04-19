@@ -1,11 +1,11 @@
 import * as types from '../constants/ActionTypes';
 
 // declare action
-export const onWeatherListen = location => {
+export const onWeatherListen = () => {
     return {
         type: types.GET_WEATHER_LISTEN,
         payload: {
-            data: location
+            data: ''
         }
     }
 }
@@ -34,6 +34,25 @@ export const onCurrentWeather = data => {
         payload: {
             message: 'Lấy dữ liệu thành công',
             data: data
+        }
+    }
+}
+export const onHourlyWeather = data => {
+    return {
+        type: types.SET_HOURLY_WEATHER,
+        payload: {
+            message: 'Lấy dữ liệu thành công',
+            data: data
+        }
+    }
+}
+
+export const onToggleTemperature = () => {
+    return {
+        type: types.TOGGLE_TEMPERATURE,
+        payload: {
+            message: 'Dispatch action thành công',
+            data: ''
         }
     }
 }

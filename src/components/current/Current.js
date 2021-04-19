@@ -9,8 +9,11 @@ function Current(props) {
     // get props
     const {
         current, 
-        daily
+        daily,
+        typeTemp,
+        onToggleTemperature
     } = props;
+
 
     // get data from current
     const {     
@@ -53,17 +56,26 @@ function Current(props) {
                             <div>
                                 <b>
                                 {
-                                    handleData.convertTempC(temp,true)
+                                    handleData.convertTempC(temp,typeTemp)
                                 }
                                 <sup>&#9900;</sup></b>
                             </div>
                             <div>
                                 <button type='button'
                                     className="temperature__active"
-                                >C</button>
+                                >
+                                    {
+                                        typeTemp?'C':'K'
+                                    }
+                                </button>
                                 <button type='button'
                                     className="temperature__disable"
-                                >K</button>
+                                    onClick={onToggleTemperature}
+                                >
+                                    {
+                                        typeTemp?'K':'C'
+                                    }
+                                </button>
                             </div>
                         </div>
                         <q><i><b>{handleData.convertDescription(weather)}</b></i></q>
@@ -73,7 +85,7 @@ function Current(props) {
                             }    
                         </b></p>
                         <p>
-                            <span>Dễ chịu: {handleData.convertTempC(feels_like,true)}<sup>&#9900;</sup> </span>&nbsp;&nbsp;
+                            <span>Dễ chịu: {handleData.convertTempC(feels_like,typeTemp)}<sup>&#9900;</sup> </span>&nbsp;&nbsp;
                             <span>Độ ẩm: {humidity||'0'}%</span>&nbsp;&nbsp;
                             <span>Gió: {wind_speedKmH||'0'}km/h</span>
                         </p>
@@ -82,7 +94,7 @@ function Current(props) {
                             <span>Tầm nhìn: {visibility/1000||'0'}km</span>&nbsp;&nbsp;
                             <span>Điểm sương: &nbsp;
                                 {   
-                                    handleData.convertTempC(dew_point,true)
+                                    handleData.convertTempC(dew_point,typeTemp)
                                 }
                                 <sup>&#9900;</sup>
                             </span>
@@ -95,14 +107,14 @@ function Current(props) {
                                 <h4>Ban ngày</h4>
                                 <p>Nhiệt độ cao nhất là &nbsp;
                                     {
-                                        handleData.convertTempC(daily[0]?daily[0].temp.max:undefined,true)
+                                        handleData.convertTempC(daily[0]?daily[0].temp.max:undefined,typeTemp)
                                     }
                                     <sup>&#9900;</sup></p>
                             
                                 <h4>Ban đêm</h4>
                                 <p>Nhiệt độ thấp nhất là &nbsp;
                                     {
-                                        handleData.convertTempC(daily[0]?daily[0].temp.min:undefined,true)
+                                        handleData.convertTempC(daily[0]?daily[0].temp.min:undefined,typeTemp)
                                     } 
                                     <sup>&#9900;</sup></p>
                             </div>
@@ -148,7 +160,7 @@ function Current(props) {
                             </div>
                             <div className="current__body__detail-content__other">
                                 <h4>Chỉ số cực tím</h4>
-                                <p>{uvi||0}</p>
+                                <p>{handleData.messageUVI(uvi)}</p>
                                 <h4>Mây</h4>
                                 <p>{clouds||0}%</p>
                                 <p></p>
@@ -158,7 +170,11 @@ function Current(props) {
                         </div>
                     </div>
                 </div>
-                
+                <div className='current__author'>
+                    <span>Dữ liệu lấy từ &nbsp; 
+                        <a href='https://www.openweathermap.org' target='_blank' rel="noopener noreferrer">Open weather</a>
+                    </span>
+                </div>
             </div>
 
     )

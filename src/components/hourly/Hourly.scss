@@ -26,7 +26,18 @@
 			}
 		}
 	
-		
+		&__body {
+			padding: 30px;
+
+			h4 {
+				color: $color-white;
+			}
+		}
+		&__author {
+			padding: 30px;
+			color: $color-white;
+			padding-top: 15px;
+		}
 	
 	}
 }

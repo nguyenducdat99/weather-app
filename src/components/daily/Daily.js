@@ -7,7 +7,8 @@ function Weekend(props) {
     // get props
     const {
         days,
-        current
+        current,
+        typeTemp
     } = props;
 
 	// convert data current
@@ -37,7 +38,7 @@ function Weekend(props) {
                                 <span className='temperature'>
                                     <b>
                                     {
-                                        handleData.convertTempC(temp,true)
+                                        handleData.convertTempC(temp,typeTemp)
                                     }
                                     <sup>&#9900;</sup></b>
                                 </span>
@@ -49,6 +50,11 @@ function Weekend(props) {
                         {
                             days
                         }
+                    </div>
+                    <div className='weekend__author'>
+                        <span>Dữ liệu lấy từ &nbsp; 
+                            <a href='https://www.openweathermap.org' target='_blank' rel="noopener noreferrer">Open weather</a>
+                        </span>
                     </div>
                 </div>
             </div>

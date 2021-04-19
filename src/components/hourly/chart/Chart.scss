@@ -1,0 +1,21 @@
+// import style library
+@import '../../../variables/Variables.scss';
+
+.hourly {
+    .temp-chart {
+        &__pagination{
+            @include propMixi(display, flex);
+            justify-content: center;
+            padding-top: 15px;
+            color: $color-white;
+            
+            .btn {
+                padding: 0.375rem 0.75rem;
+                border: 0;
+                background: none;
+                text-align: center;
+                color: $color-white;
+            }
+        }
+    }
+}

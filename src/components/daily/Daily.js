@@ -1,6 +1,6 @@
 // import style library
 import './Daily.scss';
-import * as statics from '../../constants/GlobalVariables';
+import * as handleData from '../../commons/handleData';
 
 // code function here
 function Weekend(props) {
@@ -10,16 +10,11 @@ function Weekend(props) {
         current
     } = props;
 
-
 	// convert data current
 	const {
 		temp,
 		weather
 	} = current;
-	const tempC = Math.floor(temp - 273.15);
-	const iconUrl = weather?(statics.iconUrl + weather[0].icon + '@2x.png'):'';
-	const description = weather?weather[0].description:'';
-
 
     return (
         <div className='weekend'>
@@ -34,15 +29,19 @@ function Weekend(props) {
                 <div className="weekend__body">
                     <div className='weekend__body__contents'>
                         <div className="weekend__body__contents__icon">
-                            <img src={iconUrl} alt="sun" />
+                            <img src={handleData.convertIconURL(weather,'@2x')} alt="sun" />
                         </div>
                         <div className="weekend__body__contents__weather">
                             <h3>Thành phố Hà Nội</h3>
                             <p>
                                 <span className='temperature'>
-                                    <b>{tempC}<sup>&#9900;</sup></b>
+                                    <b>
+                                    {
+                                        handleData.convertTempC(temp,true)
+                                    }
+                                    <sup>&#9900;</sup></b>
                                 </span>
-                                <span>{description}</span>
+                                <span>{handleData.convertDescription(weather)}</span>
                             </p>
                         </div>
                     </div>

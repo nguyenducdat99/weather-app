@@ -1,7 +1,7 @@
 // import style library
 import './Current.scss';
-import * as statics from '../../constants/GlobalVariables';
-import moment from 'moment';
+import * as handleData from '../../commons/handleData';
+
 
 // code function here
 function Current(props) {
@@ -18,15 +18,22 @@ function Current(props) {
         temp,
         sunrise,
         sunset,
-        dt
+        dt,
+        feels_like,
+        dew_point,
+        humidity,
+        wind_speed,
+        visibility,
+        pressure,
+        clouds,
+        uvi,
+        wind_deg
     } = current;
     
     // convert data
-    const timeUpdate = new Date(dt*1000);
+    const wind_speedKmH = Math.floor(wind_speed*3.6);
 
-    const tempC = Math.floor(temp - 273.15);
-    const weatherIconLink = weather ? (statics.iconUrl + weather[0].icon + '.png'):'';
-    const description = weather?(weather[0].description):'';
+    // return ui
     return (
         <div className='current'>
                 <div className="current__option">
@@ -41,10 +48,14 @@ function Current(props) {
                         <h1>Thành phố Hà Nội</h1>
                         <div className='temperature'>
                             <div>
-                                <img src={weatherIconLink} alt=''/>
+                                <img src={handleData.convertIconURL(weather,'@2x')} alt=''/>
                             </div>
                             <div>
-                                <b>{tempC}<sup>&#9900;</sup></b>
+                                <b>
+                                {
+                                    handleData.convertTempC(temp,true)
+                                }
+                                <sup>&#9900;</sup></b>
                             </div>
                             <div>
                                 <button type='button'
@@ -55,15 +66,26 @@ function Current(props) {
                                 >K</button>
                             </div>
                         </div>
-                        <q><i><b>{description}</b></i></q>
+                        <q><i><b>{handleData.convertDescription(weather)}</b></i></q>
                         <p><b>Đã cập nhật lúc &nbsp; 
                             {
-                                moment(timeUpdate).format('hh:mm')
+                                handleData.getHourAndMinite(dt)
                             }    
                         </b></p>
                         <p>
-                            <span>Dễ chịu: 10 </span>&nbsp;|&nbsp;
-                            <span>Độ ẩm: 20</span>&nbsp;|&nbsp;
+                            <span>Dễ chịu: {handleData.convertTempC(feels_like,true)}<sup>&#9900;</sup> </span>&nbsp;&nbsp;
+                            <span>Độ ẩm: {humidity||'0'}%</span>&nbsp;&nbsp;
+                            <span>Gió: {wind_speedKmH||'0'}km/h</span>
+                        </p>
+                        <p>
+                            <span>Áp suất: {pressure||'0'}mb </span>&nbsp;&nbsp;
+                            <span>Tầm nhìn: {visibility/1000||'0'}km</span>&nbsp;&nbsp;
+                            <span>Điểm sương: &nbsp;
+                                {   
+                                    handleData.convertTempC(dew_point,true)
+                                }
+                                <sup>&#9900;</sup>
+                            </span>
                         </p>
                     </div>
                     <div className="current__body__detail-content">
@@ -71,10 +93,18 @@ function Current(props) {
                         <div className="current__body__detail-content__grid">
                             <div className="current__body__detail-content__temperature">
                                 <h4>Ban ngày</h4>
-                                <p>Nhiệt độ cao nhất là 23 <sup>&#9900;</sup></p>
+                                <p>Nhiệt độ cao nhất là &nbsp;
+                                    {
+                                        handleData.convertTempC(daily[0]?daily[0].temp.max:undefined,true)
+                                    }
+                                    <sup>&#9900;</sup></p>
                             
                                 <h4>Ban đêm</h4>
-                                <p>Nhiệt độ thấp nhất là 18 <sup>&#9900;</sup></p>
+                                <p>Nhiệt độ thấp nhất là &nbsp;
+                                    {
+                                        handleData.convertTempC(daily[0]?daily[0].temp.min:undefined,true)
+                                    } 
+                                    <sup>&#9900;</sup></p>
                             </div>
                             <div className="current__body__detail-content__sun">
                                 <h4>Bình minh</h4>
@@ -83,21 +113,47 @@ function Current(props) {
                                     <span className="fa fa-long-arrow-up" aria-hidden="true"></span>
                                     &nbsp;
                                     {
-                                        moment(new Date(sunrise*1000)).format('hh:mm')
+                                        handleData.getHourAndMinite(sunrise)
                                     }
                                 </p>
                                 <h4>Hoàng hôn</h4>
                                 <p>
                                     <span className="fa fa-sun-o" aria-hidden="true"></span>
+                                    <span className="fa fa-long-arrow-down" aria-hidden="true"></span>
+                                    &nbsp;
+                                    {
+                                        handleData.getHourAndMinite(sunset)
+                                    }
+                                </p>
+                            </div>
+                            <div className="current__body__detail-content__moon">
+                                <h4>Mặt trăng lên</h4>
+                                <p>
+                                    <span className="fa fa-moon-o" aria-hidden="true"></span>
                                     <span className="fa fa-long-arrow-up" aria-hidden="true"></span>
                                     &nbsp;
                                     {
-                                        moment(new Date(sunset*1000)).format('hh:mm')
+                                        handleData.getHourAndMinite(daily[0]?daily[0].moonrise:daily[0])
+                                    }
+                                </p>
+                                <h4>Mặt trăng xuống</h4>
+                                <p>
+                                    <span className="fa fa-moon-o" aria-hidden="true"></span>
+                                    <span className="fa fa-long-arrow-down" aria-hidden="true"></span>
+                                    &nbsp;
+                                    {
+                                        handleData.getHourAndMinite(daily[0]?daily[0].moonset:'')
                                     }
                                 </p>
                             </div>
                             <div className="current__body__detail-content__other">
-                                c
+                                <h4>Chỉ số cực tím</h4>
+                                <p>{uvi||0}</p>
+                                <h4>Mây</h4>
+                                <p>{clouds||0}%</p>
+                                <p></p>
+                                <h4>Hướng gió</h4>
+                                <p>{wind_deg||0}<sup>&#9900;</sup></p>
                             </div>
                         </div>
                     </div>

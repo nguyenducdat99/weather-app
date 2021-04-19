@@ -13,8 +13,6 @@ function myReducer(state=initialState, action) {
                 ...payload.data.current
             }    
 
-            console.log(state);
-
             return {...state};
         default:
 

@@ -81,7 +81,7 @@
 
 				&__grid {
 					display: grid;
-					grid-template-columns: 1fr 1fr 1fr;
+					grid-template-columns: repeat(4, 1fr);
 					grid-column-gap: 20px;
 				}
 
@@ -93,6 +93,7 @@
 
 				&__temperature,
 				&__sun,
+				&__moon,
 				&__other {
 					border-top: 1px solid white;
 					

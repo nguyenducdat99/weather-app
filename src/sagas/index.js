@@ -8,7 +8,7 @@ import * as types from '../constants/ActionTypes';
 function* getLocations() {
     const location = yield call(APITask.getlocation);
 
-    const getWeather = yield call(
+        const getWeather = yield call(
         APITask.getWeather,
         {
             lat: location.lat||21.020045,

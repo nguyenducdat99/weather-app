@@ -15,9 +15,17 @@ export const getWeather = async location => {
 }
 
 export const getlocation = async () => {
-    const location = await APICaller.getCoords();
+    try {
+        const location = await APICaller.getCoords();
 
-    return location;
+        return location;
+    } catch (error) {
+        console.log(error);
+        return {
+            lat: null,
+            lon: null
+        };
+    }
 }
 
 

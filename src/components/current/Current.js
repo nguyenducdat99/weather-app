@@ -11,7 +11,8 @@ function Current(props) {
         current, 
         daily,
         typeTemp,
-        onToggleTemperature
+        onToggleTemperature,
+        location
     } = props;
 
 
@@ -48,7 +49,7 @@ function Current(props) {
                 </div>
                 <div className="current__body">
                     <div className='current__body__quick-contents'>
-                        <h1>Vị trí của bạn</h1>
+                        <h1>{location.name}</h1>
                         <div className='temperature'>
                             <div>
                                 <img src={handleData.convertIconURL(weather,'@2x')} alt=''/>

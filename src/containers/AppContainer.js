@@ -17,7 +17,8 @@ function AppContainer(props) {
         current,
         typeTemp,
         onToggleTemperature,
-        hourly
+        hourly,
+        location
     } = props;
 
 
@@ -49,6 +50,7 @@ function AppContainer(props) {
                 current={current}
                 typeTemp={typeTemp}
                 onToggleTemperature={onToggleTemperature}
+                location={location}
             />
         )
     }
@@ -69,6 +71,7 @@ function AppContainer(props) {
                 days={listDay}
                 current={current}
                 typeTemp={typeTemp}
+                location={location}
             />
         )
     }
@@ -98,7 +101,8 @@ AppContainer.propTypes = {
     daily: PropTypes.array,
     current: PropTypes.object,
     typeTemp: PropTypes.bool,
-    onToggleTemperature: PropTypes.func
+    onToggleTemperature: PropTypes.func,
+    location: PropTypes.object
 }
 
 const mapStateToProps = state => {
@@ -106,7 +110,8 @@ const mapStateToProps = state => {
         daily: state.daily,
         current: state.current,
         typeTemp: state.temperature,
-        hourly: state.hourly
+        hourly: state.hourly,
+        location: state.location,
     }
 }
 

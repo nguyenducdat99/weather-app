@@ -5,6 +5,7 @@ export const onWeatherListen = () => {
     return {
         type: types.GET_WEATHER_LISTEN,
         payload: {
+            message: 'Saga được gọi.',
             data: ''
         }
     }
@@ -53,6 +54,16 @@ export const onToggleTemperature = () => {
         payload: {
             message: 'Dispatch action thành công',
             data: ''
+        }
+    }
+}
+
+export const onSetLocation = data => {
+    return {
+        type: types.SET_LOCATION,
+        payload: {
+            message: 'Lấy dữ liệu cho vị trí',
+            data: data
         }
     }
 }

@@ -8,7 +8,8 @@ function Weekend(props) {
     const {
         days,
         current,
-        typeTemp
+        typeTemp,
+        location
     } = props;
 
 	// convert data current
@@ -33,7 +34,7 @@ function Weekend(props) {
                             <img src={handleData.convertIconURL(weather,'@2x')} alt="sun" />
                         </div>
                         <div className="weekend__body__contents__weather">
-                            <h3>Vị trí của bạn</h3>
+                            <h3>{location.name}</h3>
                             <p>
                                 <span className='temperature'>
                                     <b>

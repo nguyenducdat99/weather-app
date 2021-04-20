@@ -12,3 +12,6 @@ export const SET_HOURLY_WEATHER = 'SET_HOURLY_WEATHER';
 
 // type for temperature
 export const TOGGLE_TEMPERATURE = 'TOGGLE_TEMPERATURE';
+
+// type for location
+export const SET_LOCATION = 'SET_LOCATION';

@@ -42,5 +42,42 @@ body {
 		top: 25px;
 		background-color: $color-background-blue;
 	}
+
+	&__search {
+		position: fixed;
+		left: 3.8%;
+		top: 7px;
+		z-index: 9999;
+
+		.form-group {
+			background-color: $color-white;
+			border-radius: 0.25rem;
+
+			.form-control {
+				padding: 0.375rem;
+				border: 0;
+				color: $color-gray;
+			}
+
+			button {
+				padding: 0.375rem;
+				border: 0;
+				background: none;
+				color: $color-gray;
+				font-size: $font-size-18;
+				transition: all 1s;
+				&:hover {
+					background: $color-lightgray;
+				}
+			}
+
+			input,
+			button {
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+	}
 }
 

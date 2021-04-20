@@ -18,7 +18,8 @@ function AppContainer(props) {
         typeTemp,
         onToggleTemperature,
         hourly,
-        location
+        location,
+        getLattitudeAndLongtitude
     } = props;
 
 
@@ -92,6 +93,8 @@ function AppContainer(props) {
             current={currentUI}
             hourly={hourlyUI}
             daily={dailyUI}
+            getLattitudeAndLongtitude={getLattitudeAndLongtitude}
+            getWeather={getWeather}
         />
     )
 }
@@ -102,7 +105,8 @@ AppContainer.propTypes = {
     current: PropTypes.object,
     typeTemp: PropTypes.bool,
     onToggleTemperature: PropTypes.func,
-    location: PropTypes.object
+    location: PropTypes.object,
+    getLattitudeAndLongtitude: PropTypes.func
 }
 
 const mapStateToProps = state => {
@@ -122,6 +126,9 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         onToggleTemperature: () => {
             dispatch(actions.onToggleTemperature());
+        },
+        getLattitudeAndLongtitude: name => {
+            dispatch(actions.onGetLattitudeAndLongtitude(name))
         }
     }
 }

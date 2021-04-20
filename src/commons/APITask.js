@@ -14,6 +14,20 @@ export const getWeather = async location => {
     return response;
 }
 
+
+export const getLattitudeAndLongtitude = async name => {
+    const response = await APICaller.getAPI(
+        'GET',
+        ('http://api.openweathermap.org/geo/1.0/direct?'+
+        `q=${name}&limit=5&`+
+        'appid=7dae8f72de1919406e84921487385252&'+
+        'lang=vi'),
+        null
+    )
+
+    return response;
+}
+
 export const getlocation = async () => {
     try {
         const location = await APICaller.getCoords();
@@ -27,5 +41,6 @@ export const getlocation = async () => {
         };
     }
 }
+
 
 

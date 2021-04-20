@@ -67,3 +67,33 @@ export const onSetLocation = data => {
         }
     }
 }
+
+export const onGetLocation = data => {
+    return {
+        type: types.GET_LOCATION,
+        payload: {
+            message: 'Lấy dữ liệu cho vị trí',
+            data: [...data]
+        }
+    }
+}
+
+export const onGetLattitudeAndLongtitude = name => {
+    return {
+        type: types.GET_LATTITUDE_LONGTITUDE_LISTEN,
+        payload: {
+            message: 'Saga được gọi.',
+            data: name
+        }
+    }
+}
+
+export const onSetLattitudeAndLongtitude = data => {
+    return {
+        type: types.GET_LATTITUDE_LONGTITUDE_LISTEN,
+        payload: {
+            message: 'Lấy dữ liệu từ tên thành phố',
+            data: data
+        }
+    }
+}

@@ -15,3 +15,8 @@ export const TOGGLE_TEMPERATURE = 'TOGGLE_TEMPERATURE';
 
 // type for location
 export const SET_LOCATION = 'SET_LOCATION';
+export const GET_LOCATION = 'GET_LOCATION';
+
+// type for lattitude and longtitude
+export const GET_LATTITUDE_LONGTITUDE_LISTEN = 'GET_LATTITUDE_LONGTITUDE_LISTEN';
+export const SET_LATTITUDE_LONGTITUDE = 'SET_LATTITUDE_LONGTITUDE';

@@ -7,10 +7,17 @@ import * as types from '../constants/ActionTypes';
 
 function* getLocations() {
     const location = yield call(APITask.getlocation);
-    if (location.lat&&location.lon) yield put(actions.onSetLocation({
-        message: "Vị trí hiện tại.",
-        name: "Vị trí của bạn"
-    }))
+    if (location.lat&&location.lon) {
+        yield put(actions.onSetLocation({
+            message: "Vị trí hiện tại.",
+            name: "Vị trí của bạn"
+        }))
+    }else{
+        yield put(actions.onSetLocation({
+            message: 'Vị trí mặc định',
+            name: 'Công ty AHT'
+        }))
+    }
 
     const getWeather = yield call(
         APITask.getWeather,

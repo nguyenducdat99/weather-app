@@ -129,7 +129,7 @@ const mapDispatchToProps = (dispatch, props) => {
         },
         getLattitudeAndLongtitude: name => {
             dispatch(actions.onGetLattitudeAndLongtitude(name))
-        }
+        },
     }
 }
 

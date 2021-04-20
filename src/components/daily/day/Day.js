@@ -62,7 +62,7 @@ function Day(props) {
                 <p>Áp suất: {pressure}mb</p>
                 <p>Gió: {Math.floor(wind_speed*3.6)}km/h</p>
                 <p>Uvi: {handleData.messageUVI(uvi)}</p>
-                <p><i>{handleData.convertDescription(weather)}</i></p>
+                <q><i>{handleData.convertDescription(weather)}</i></q>
             </div>
         </div>
     )

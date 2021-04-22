@@ -14,7 +14,7 @@ function myReducer(state=initialState, action) {
             state = {
                 ...state,
                 message: 'Lấy dữ liệu từ cơ sở dữ liệu',
-                name: payload.data[0].local_names.vi||payload.data[0].name
+                name: (payload.data[0].local_names?payload.data[0].local_names.vi:null)||payload.data[0].name
             }
             
             return {...state }

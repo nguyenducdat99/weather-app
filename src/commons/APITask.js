@@ -3,7 +3,7 @@ import * as APICaller from './APICaller';
 export const getWeather = async location => {
     const response = await APICaller.getAPI(
         'GET',
-        ('http://api.openweathermap.org/data/2.5/onecall?'+
+        ('https://api.openweathermap.org/data/2.5/onecall?'+
         'appid=7dae8f72de1919406e84921487385252&'+
         `lat=${location.lat}&`+
         `lon=${location.lon}&`+
@@ -18,7 +18,7 @@ export const getWeather = async location => {
 export const getLattitudeAndLongtitude = async name => {
     const response = await APICaller.getAPI(
         'GET',
-        ('http://api.openweathermap.org/geo/1.0/direct?'+
+        ('https://api.openweathermap.org/geo/1.0/direct?'+
         `q=${name}&limit=5&`+
         'appid=7dae8f72de1919406e84921487385252&'+
         'lang=vi'),
